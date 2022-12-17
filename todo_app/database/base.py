@@ -3,10 +3,10 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-from todo.config import settings
+from todo_app.config import settings
 
 BASE_DIR = os.path.dirname(os.path.abspath(__name__))
-db_path = os.path.join(BASE_DIR, 'todo', 'database', 'DB')
+db_path = os.path.join(BASE_DIR, 'todo_app', 'database', 'DB')
 if not os.path.exists(db_path):
     os.makedirs(db_path)
 

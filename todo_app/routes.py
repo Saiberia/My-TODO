@@ -3,10 +3,10 @@ from sqlalchemy.orm import Session
 from starlette.responses import RedirectResponse
 from starlette.status import HTTP_303_SEE_OTHER, HTTP_302_FOUND
 
-from todo.config import settings
-from todo.database.base import get_db
-from todo.main import app, templates
-from todo.models import ToDo
+from todo_app.config import settings
+from todo_app.database.base import get_db
+from todo_app.main import app, templates
+from todo_app.models import ToDo
 
 
 @app.get('/')
