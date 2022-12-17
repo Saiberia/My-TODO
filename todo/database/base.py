@@ -14,11 +14,11 @@ Base = declarative_base()
 
 
 def get_db():
-    db_session_local = SessionLocal()
+    db_session = Session()
     try:
-        yield db_session_local
+        yield db_session
     finally:
-        db_session_local.close()
+        db_session.close()
 
 def choose_db(arg_db):
     engine = create_engine(settings.db_sqlite_url, connect_args={'check_same_thread': False}, echo=True)
@@ -27,4 +27,4 @@ def choose_db(arg_db):
 
 check_db = choose_db(settings.db_sqlite_url)
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=check_db)
+Session = sessionmaker(autocommit=False, autoflush=False, bind=check_db)

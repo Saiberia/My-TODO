@@ -5,13 +5,13 @@ from starlette.status import HTTP_303_SEE_OTHER, HTTP_302_FOUND
 
 from todo.config import settings
 from todo.database.base import get_db
-from todo.app import app, templates
+from todo.main import app, templates
 from todo.models import ToDo
 
 
 @app.get('/')
-def home(request: Request, db_session: Session = Depends(get_db)):
-    todos = db_session.query(ToDo).all()
+def home(request: Request, db_ses: Session = Depends(get_db)):
+    todos = db_ses.query(ToDo).all()
     return templates.TemplateResponse('todo/index.html',
                                       {'request': request,
                                        'app_name': settings.app_name,
